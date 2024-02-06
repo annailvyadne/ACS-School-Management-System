@@ -11,9 +11,6 @@ require('phpcodes/connection.php');
 
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal" data-bs-whatever="@mdo" style="margin-left: 20px; margin-bottom: 2px; background-color: red; border: 0; box-shadow: 0 12px 16px 0 rgba(0,0,0,0.10),0 17px 50px 0 rgba(0,0,0,0.10); ">Add Subject</button>
 
-
-    <div class="cards">
-    </div>
     <div class="content-2" style="margin-top: 50px;">
 
         <div class="title">
@@ -89,13 +86,13 @@ require('phpcodes/connection.php');
       <div class="modal-body">
         <form method="post" action="subjectCRUD/create.php" class="needs-validation" novalidate enctype="multipart/form-data">
           <div class="mb-3">
-            <label for="subjName" class="form-label">Subject</label>
-            <input type="text" name="subjName" id="subjName" class="form-control" required>
+            <label for="subjName" class="form-label">Subject Name</label>
+            <input type="text" name="subjName" id="subjName" class="form-control" placeholder="Enter a subject name" required>
             <div class="invalid-feedback">Subject is required.</div>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Assigned Teacher</label>
-            <select name="facultyID" class="form-select" aria-label="Default Select Example" required>
+            <select name="facultyID" class="form-select" aria-label="Default Select Example" placeholder="Assign a teacher" required>
               <option value="" selected disabled>Select a teacher</option>
               <?php
               $query = "SELECT * FROM Faculty";
@@ -112,7 +109,7 @@ require('phpcodes/connection.php');
           </div>
           <div class="mb-3">
             <label for="files" class="form-label">Cover Photo</label>
-            <input type="file" name="files" id="files" required class="form-control">
+            <input type="file" name="files" id="files" required class="form-control" placeholder="Select a photo">
           </div>
       </div>
       <div class="modal-footer">
@@ -137,13 +134,13 @@ require('phpcodes/connection.php');
         <form method="post" action="subjectCRUD/update.php" class="needs-validation" novalidate enctype="multipart/form-data">
           <div class="mb-3">
             <input type="hidden" name="subjID" id="subjID_edit">
-            <label for="subjName" class="form-label">Subject</label>
-            <input type="text" name="edit_subject" id="edit_subject" class="form-control" required>
-            <div class="invalid-feedback">Subject is required.</div>
+            <label for="subjName" class="form-label">Subject Name</label>
+            <input type="text" name="edit_subject" id="edit_subject" class="form-control" placeholder="Enter subject name" required>
+            <div class="invalid-feedback">Subject name is required</div>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Assigned Teacher</label>
-            <select name="edit_facultyID" class="form-select" aria-label="Default Select Example" required id="ha">
+            <select name="edit_facultyID" class="form-select" aria-label="Default Select Example" placeholder="Assign a teacher" id="ha" required>
               <option value="" selected disabled>Select a teacher</option>
               <?php
               $query = "SELECT * FROM Faculty";
@@ -156,11 +153,11 @@ require('phpcodes/connection.php');
               }
               ?>
             </select>
-            <div class="invalid-feedback">Teacher is required.</div>
+            <div class="invalid-feedback">Teacher is required</div>
           </div>
           <div class="mb-3">
             <label for="files" class="form-label">Cover Photo</label>
-            <input type="file" name="files" id="files" class="form-control">
+            <input type="file" name="files" id="files" class="form-control" placeholder="Select a photo">
           </div>
 
       </div>

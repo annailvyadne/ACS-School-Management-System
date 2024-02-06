@@ -1,6 +1,6 @@
 <?php 
 session_start();
-  print_r($_POST);
+print_r($_POST);
 require('../phpcodes/connection.php');
 
 
@@ -8,9 +8,9 @@ require('../phpcodes/connection.php');
     print_r($_POST);
     $id = $_POST['id_delete']; 
 
-    $query = "DELETE FROM subject WHERE subjectID = ?";
-    $stmt = mysqli_prepare($conn, $query);
-    $stmt->bind_param("i", $id);
+$query = "DELETE FROM subject WHERE subjectID = ?";
+$stmt = mysqli_prepare($conn, $query);
+$stmt->bind_param("i", $id);
 
     if($stmt->execute()){
     // Check the affected rows to verify if the insertion was successful

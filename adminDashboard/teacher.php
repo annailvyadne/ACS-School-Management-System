@@ -66,13 +66,12 @@ require('phpcodes/connection.php');
 </div>
                           </div>
 
-
-   <!-- Create modal -->
-<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden"true">
-  <div class="modal-dialog">=
-    <div class="modal-content">
-      <div class="modal-header">
-              <h1 class="modal-title fs-5" id="modalHeader">Add Teacher</h1>
+<!--create modal-->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="modalHeader" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalHeader">Add Teacher</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -132,14 +131,17 @@ require('phpcodes/connection.php');
     </select>
     <div class="invalid-feedback">Faculty type is required</div>
 </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-      </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
+
 
 
 <!-- Edit modal -->
@@ -155,28 +157,31 @@ require('phpcodes/connection.php');
                     <input type="hidden" name="facultyID_edit" id="facuiltyID_edit">
                     <div class="mb-3">
                         <label for="fname_edit" class="col-form-label">First Name:</label>
-                        <input type="text" class="form-control" id="fname_edit" name="fname">
+                        <input type="text" class="form-control" id="fname_edit" name="fname" placeholder="Enter first name" required>
+                        <div class="invalid-feedback">First name is required</div>
                     </div>
                     <div class="mb-3">
                         <label for="lname_edit" class="col-form-label">Last Name:</label>
-                        <input type="text" class="form-control" id="lname_edit" name="lname">
+                        <input type="text" class="form-control" id="lname_edit" name="lname" placeholder="Enter last name" required>
+                        <div class="invalid-feedback">Last name is required</div>
                     </div>
                     <div class="mb-3">
                         <label for="mn_edit" class="col-form-label">Mobile Number:</label>
-                        <input type="text" class="form-control" id="mn_edit" name="mn">
+                        <input type="text" class="form-control" id="mn_edit" name="mn" placeholder="Enter mobile number">
                     </div>
                     <div class="mb-3">
                         <label for="ea_edit" class="col-form-label">Email Address:</label>
-                        <input type="text" class="form-control" id="ea_edit" name="ea">
+                        <input type="text" class="form-control" id="ea_edit" name="ea" placeholder="Email address" required>
+                        <div class="invalid-feedback">Email address is required</div>
                     </div>
                     <div class="mb-3">
                         <label for="password_edit" class="col-form-label">Password</label>
-                        <input type="password" class="form-control" id="password_edit" name="password">
+                        <input type="password" class="form-control" id="password_edit" name="password" placeholder="Enter a password" required>
+                        <div class="invalid-feedback">Password is required</div>
                     </div>
                     <div class="mb-3">
                         <label for="type_edit" class="col-form-label">Type:</label>
-                        <select name="fType" id="type_edit" class="form-select" aria-label="Default Select Example"
-                            name="t">
+                        <select name="fType" id="type_edit" class="form-select" aria-label="Default Select Example" name="t" placeholder="Select a faculty type" required>
                             <?php 
                                 $query = "SELECT * FROM FacultyTypes";
                                 $query_run = mysqli_query($conn,$query);
@@ -188,6 +193,7 @@ require('phpcodes/connection.php');
                                 }
                             ?>
                         </select>
+                        <div class="invalid-feedback">Faculty type is required</div>
                     </div>
             </div>
             <div class="modal-footer">

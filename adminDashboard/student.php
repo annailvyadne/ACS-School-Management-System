@@ -99,15 +99,15 @@ require('phpcodes/connection.php');
         <form method="post" action="studentCRUD/create.php" class="needs-validation" novalidate>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">First Name:</label>
-            <input type="text" class="form-control" id="recipient-name" name="fname" required>
+            <input type="text" class="form-control" id="recipient-name" placeholder="Enter first name" name="fname" required>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Last Name:</label>
-            <input type="text" class="form-control" id="recipient-name" name="lname" required>
+            <input type="text" class="form-control" id="recipient-name" placeholder="Enter last name" name="lname" required>
           </div>
           <div class="mb-3">
             <label for="parentID" class="form-label">Parent</label>
-            <select name="parentID" id="parentID" class="form-select">
+            <select name="parentID" id="parentID" class="form-select" placeholder="Select a parent">
               <option value="" selected disabled>Select a Parent</option>
               <?php 
                 $query = "SELECT * FROM parents";
@@ -121,24 +121,24 @@ require('phpcodes/connection.php');
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Mobile Number:</label>
-            <input type="text" class="form-control" id="recipient-name" name="mn" required>
+            <input type="text" class="form-control" id="recipient-name" name="mn" placeholder="Enter mobile number" required>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Email Address:</label>
-            <input type="email" class="form-control" id="recipient-name" name="ea" required>
+            <input type="email" class="form-control" id="recipient-name" name="ea" placeholder="Enter email address" required>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Password</label>
-            <input type="password" class="form-control" id="recipient-name" name="password" required> 
+            <input type="password" class="form-control" id="recipient-name" name="password" placeholder="Enter password" required> 
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Birthdate</label>
-            <input type="date" class="form-control" id="recipient-name" name="dob" required>
+            <input type="date" class="form-control" id="recipient-name" name="dob" placeholder="Enter birthdate" required>
           </div>
 
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Grade Level</label>
-            <select name="gradelvl" class="form-select" aria-label="Default Select Example" required>
+            <label for="recipient-name" class="col-form-label">Grade Level and Section</label>
+            <select name="gradelvl" class="form-select" aria-label="Default Select Example" placeholder="Select grade level and section" required>
               <option value="" selected disabled>Select a Section</option>
                 <?php 
                   $query = "SELECT * FROM sections";
@@ -167,7 +167,7 @@ require('phpcodes/connection.php');
   <div class="modal-dialog">=
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Student Modal</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Student Record</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -175,15 +175,17 @@ require('phpcodes/connection.php');
           <input type="hidden" name="studentID" id="studentID_edit">
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">First Name:</label>
-            <input type="text" class="form-control" id="fname_edit" name="fname" required>
+            <input type="text" class="form-control" id="fname_edit" name="fname"  placeholder="Enter first name" required>
+            <div class="invalid-feedback">First name is required</div>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Last Name:</label>
-            <input type="text" class="form-control" id="lname_edit" name="lname" required>
+            <input type="text" class="form-control" id="lname_edit" name="lname" placeholder="Enter last name" required>
+            <div class="invalid-feedback">Last name is required</div>
           </div>
           <div class="mb-3">
             <label for="parentID" class="form-label">Parent</label>
-            <select name="parentID" id="parentID_edit" class="form-select" required>
+            <select name="parentID" id="parentID_edit" class="form-select" placeholder="Select a parent" required>
               <option value="" selected disabled>Select a Parent</option>
               <?php 
                 $query = "SELECT * FROM parents";
@@ -194,27 +196,31 @@ require('phpcodes/connection.php');
                 }
               ?>
             </select>
+            <div class="invalid-feedback">parent is required</div>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Mobile Number:</label>
-            <input type="text" class="form-control" id="phoneNo_edit" name="mn" required>
+            <input type="text" class="form-control" id="phoneNo_edit" name="mn" placeholder="Enter mobile number">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Email Address:</label>
-            <input type="text" class="form-control" id="email_edit" name="ea" required>
+            <input type="text" class="form-control" id="email_edit" name="ea" placeholder="Enter email address" required>
+            <div class="invalid-feedback">Email address is required</div>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Password</label>
-            <input type="password" class="form-control" id="password_edit" name="password" required>
+            <input type="password" class="form-control" id="password_edit" name="password" placeholder="Enter password" required>
+            <div class="invalid-feedback">Password is required</div>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Birthdate</label>
-            <input type="date" class="form-control" id="bday_edit" name="dob" required>
+            <input type="date" class="form-control" id="bday_edit" name="dob" placeholder="Enter birthdate" required>
+            <div class="invalid-feedback">Birthdate is required</div>
           </div>
 
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Grade Level</label>
-            <select name="gradelvl" class="form-select" aria-label="Default Select Example" id="gradeLvl_edit" required>
+            <select name="gradelvl" class="form-select" aria-label="Default Select Example" id="gradeLvl_edit" placeholder="Select grade level" required>
                 <?php 
                 // Assuming the grade levels are predefined
                 $gradeLevels = array(0, 1, 2, 3, 4, 5, 6);
@@ -225,6 +231,7 @@ require('phpcodes/connection.php');
                 }
                 ?>
             </select>
+            <div class="invalid-feedback">Grade level is required</div>
           </div>
       </div>
       <div class="modal-footer">
@@ -250,6 +257,10 @@ require('phpcodes/connection.php');
     let table = new DataTable('#datatable');
   </script> 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <?php
+require('newLayout/scripts.php');
+?>
  <script>
     $(document).ready(function(){
         $('#datatable').on('click', '.updateBtn', function(){

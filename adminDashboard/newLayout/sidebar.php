@@ -31,7 +31,7 @@
               </a>
             </li>
             <li>
-              <a href="parentrecords.php" class="nav-link px-3">
+              <a href="parent.php" class="nav-link px-3">
                 <span class="me-2"><i class="i fi-rr-users"></i></span>
                 <span>Parents</span>
               </a>
@@ -43,7 +43,7 @@
               </a>
             </li>
             <li>
-              <a href="subject.php" class="nav-link px-3">
+              <a href="subjects.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-book-open-cover"></i></span>
                 <span>Subjects</span>
               </a>
@@ -55,13 +55,13 @@
               </a>
             </li>
             <li>
-              <a href="learningmaterials.php" class="nav-link px-3">
+              <a href="materials.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-layout-fluid"></i></span>
                 <span>Materials</span>
               </a>
             </li>
             <li>
-              <a href="workactivity.php" class="nav-link px-3">
+              <a href="activity.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-pencil"></i></span>
                 <span>Activities</span>
               </a>
