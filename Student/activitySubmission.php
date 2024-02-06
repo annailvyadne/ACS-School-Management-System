@@ -128,8 +128,8 @@ require('StudentLayout/sidebar.php');
 
                     <div class="mb-3">
                         <label for="regionNameID" class="form-label">Your answer</label>
-                        <textarea class="form-control" id="studentanswer" name="studentanswer" required></textarea>
-                       <div class="invalid-feedback">Activity Description is required</div>
+                        <textarea class="form-control" id="studentanswer" name="studentanswer" placeholder="Enter your answer" required></textarea>
+                       <div class="invalid-feedback">Answer is required</div>
                       </div>
                  
                     <div class="mb-3">

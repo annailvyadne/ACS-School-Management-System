@@ -77,12 +77,12 @@ require('phpcodes/connection.php');
           <form method="post" action="learningMaterialCRUD/create.php" class="needs-validation" novalidate enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="title" class="col-form-label">Title</label>
-                <input type="text" class="form-control" id="title" name="title" required>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Enter a learning title" required>
                 <div class="invalid-feedback">Title is required.</div>
             </div>
             <div class="mb-3">
               <label for="classID" class="col-form-label">Class</label>
-              <select name="classID" id="classID" class="form-select" aria-label="Default Select Example" required>
+              <select name="classID" id="classID" class="form-select" aria-label="Default Select Example" placeholder="Select a class" required>
                 <option value="" selected disabled>Select a class</option>
                   <?php 
 
@@ -99,7 +99,7 @@ require('phpcodes/connection.php');
             </div>
             <div class="mb-3">
               <label for="score" class="col-form-label">Files</label>
-              <input type="file" name="files[]" id="files" class="form-control">
+              <input type="file" name="files[]" id="files" class="form-control" placeholder="Upload a file">
             </div>
         </div>
         <div class="modal-footer">
@@ -111,7 +111,7 @@ require('phpcodes/connection.php');
   </div>
 </div>
 
-
+<!--EDIT-->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="modalHeader" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -124,13 +124,13 @@ require('phpcodes/connection.php');
             <input type="hidden" name="id" id="editID">
           <div class="mb-3">
                 <label for="title" class="col-form-label">Title</label>
-                <input type="text" class="form-control" id="edit_title" name="title" required>
-                <div class="invalid-feedback">Title is required.</div>
+                <input type="text" class="form-control" id="edit_title" name="title">
             </div>
             <div class="mb-3">
               <label for="classID" class="col-form-label">Class</label>
               <select name="classID" id="edit_classID" class="form-select" aria-label="Default Select Example" required>
                 <option value="" selected disabled>Select a class</option>
+
                   <?php 
 
                   $query = "SELECT c.*,st.sectionName, st.gradeLevel,s.subjectName FROM class c INNER JOIN subject s ON(s.subjectID = c.subjectID) INNER JOIN sections st ON(st.sectionID = c.sectionID)";
@@ -177,6 +177,14 @@ require('phpcodes/connection.php');
     inputElement.value = inputValue;
 }
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+  <script>
+    let table = new DataTable('#datatable');
+  </script> 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
 </script>
     
  <script>

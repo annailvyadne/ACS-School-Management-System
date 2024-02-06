@@ -74,12 +74,12 @@ require('phpcodes/connection.php');
                 <form method="post" action="sectionCRUD/create.php" novalidate class="needs-validation">
                     <div class="mb-3">
                         <label for="sectionname" class="col-form-label">Section Name:</label>
-                        <input type="text" class="form-control" id="sectionname" name="sectionname" required>
+                        <input type="text" class="form-control" id="sectionname" name="sectionname" placeholder="Enter section name" required>
                         <div class="invalid-feedback">Section name is required</div>
                     </div>
     <div class="mb-3">
     <label for="recipient-name" class="col-form-label">Faculty Name</label>
-    <select name="facultyID" class="form-select" aria-label="Default Select Example" required>
+    <select name="facultyID" class="form-select" aria-label="Default Select Example" placeholder="Enter faculty name" required>
         <?php 
 
         $query = "SELECT * FROM faculty";
@@ -97,7 +97,7 @@ require('phpcodes/connection.php');
 
     <div class="mb-3">
     <label for="recipient-name" class="col-form-label" required>Grade Level</label>
-    <select name="gradelvl" class="form-select" aria-label="Default Select Example">
+    <select name="gradelvl" class="form-select" aria-label="Default Select Example" placeholder="Select a grade level" required>
         <?php 
         // Assuming the grade levels are predefined
         $gradeLevels = array(0, 1, 2, 3, 4, 5, 6);
@@ -107,6 +107,7 @@ require('phpcodes/connection.php');
         }
         ?>
     </select>
+    <div class="invalid-feedback">Grade level is required</div>
 </div>
             </div>
             <div class="modal-footer">
@@ -135,11 +136,12 @@ require('phpcodes/connection.php');
                     <input type="hidden" name="sectionIDedit" id="sectionIDedit">
                     <div class="mb-3">
                         <label for="sectionEdit" class="col-form-label">Section Name:</label>
-                        <input type="text" class="form-control" id="sectionEdit" name="sectionEdit">
+                        <input type="text" class="form-control" id="sectionEdit" name="sectionEdit" placeholder="Enter section name" required>
+                        <div class="invalid-feedback">Section name is required</div>
                     </div>
                    <div class="mb-3">
     <label for="recipient-name" class="col-form-label">Faculty Name</label>
-    <select name="facultyID_edit" id="facultyID_edit" class="form-select" aria-label="Default Select Example">
+    <select name="facultyID_edit" id="facultyID_edit" class="form-select" aria-label="Default Select Example" placeholder="Enter faculty name" required>
         <?php 
 
         $query = "SELECT * FROM faculty";
@@ -152,10 +154,11 @@ require('phpcodes/connection.php');
       
         ?>
     </select>
+    <div class="invalid-feedback">Faculty name is required</div>
 </div>
     <div class="mb-3">
     <label for="recipient-name" class="col-form-label">Grade Level</label>
-    <select name="gradeLvl_edit" id="gradeLvl_edit" class="form-select" aria-label="Default Select Example">
+    <select name="gradeLvl_edit" id="gradeLvl_edit" class="form-select" aria-label="Default Select Example" placeholder="Select a grade level" required>
         <?php 
         // Assuming the grade levels are predefined
         $gradeLevels = array(0, 1, 2, 3, 4, 5, 6);
@@ -167,6 +170,7 @@ require('phpcodes/connection.php');
         ?>
     </select>
 </div>
+<div class="invalid-feedback">Grade level is required</div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -263,7 +267,26 @@ require('newLayout/scripts.php');
     });
 </script>
 
-
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+</script>
 
 <?php 
   if(isset($_SESSION['status']) && $_SESSION['status'] != ""){

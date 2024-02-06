@@ -36,9 +36,12 @@
 
             <!-- Right-aligned "Logout" button -->
             <div class="ml-auto">
+
+            <a href="../main/SchoolPortal.php">
                 <button class="btn btn-secondary btn-lg text-white rounded-0" id="logoutBtn">
                     Logout
                 </button>
+                </a>
             </div>
 
             <!-- ... (Existing navbar content) -->

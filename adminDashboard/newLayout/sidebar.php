@@ -21,31 +21,31 @@
             </li>
             <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
             <li>
-              <a href="studentrecords.php" class="nav-link px-3">
+              <a href="student.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-graduation-cap"></i></span>
                 <span>Students</span>
               </a>
             </li>
             <li>
-              <a href="teacherrecords.php" class="nav-link px-3">
+              <a href="teacher.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-users-alt"></i></span>
                 <span>Teachers</span>
               </a>
             </li>
             <li>
-              <a href="parentrecords.php" class="nav-link px-3">
+              <a href="parent.php" class="nav-link px-3">
                 <span class="me-2"><i class="i fi-rr-users"></i></span>
                 <span>Parents</span>
               </a>
             </li>
             <li>
-              <a href="section.php" class="nav-link px-3">
+              <a href="sections.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-edit-alt"></i></span>
                 <span>Sections</span>
               </a>
             </li>
             <li>
-              <a href="subject.php" class="nav-link px-3">
+              <a href="subjects.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-book-open-cover"></i></span>
                 <span>Subjects</span>
               </a>
@@ -57,13 +57,13 @@
               </a>
             </li>
             <li>
-              <a href="learningmaterials.php" class="nav-link px-3">
+              <a href="materials.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-layout-fluid"></i></span>
                 <span>Materials</span>
               </a>
             </li>
             <li>
-              <a href="workactivity.php" class="nav-link px-3">
+              <a href="activity.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-pencil"></i></span>
                 <span>Activities</span>
               </a>

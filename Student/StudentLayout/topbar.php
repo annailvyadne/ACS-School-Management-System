@@ -36,11 +36,14 @@
                     Account Settings
                 </button>
             </a>
+            
             <!-- Right-aligned "Logout" button -->
+            <a href="../main/SchoolPortal.php">
             <div class="ml-auto">
                 <button class="btn btn-secondary btn-lg text-white rounded-0" onclick="logout()">
                     Logout
                 </button>
+                </a>
             </div>
 
             <!-- ... (Existing navbar content) -->

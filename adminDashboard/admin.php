@@ -74,11 +74,8 @@ require('phpcodes/connection.php');
                 <i class="bi bi-person-fill"></i>
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
+                <li><a class="dropdown-item" href="../main/SchoolPortal.php">Logout</a></li>
+
               </ul>
             </li>
           </ul>
@@ -86,6 +83,7 @@ require('phpcodes/connection.php');
       </div>
     </nav>
     <!-- top navigation bar -->
+
     <!-- offcanvas -->
     <div
       class="offcanvas offcanvas-start sidebar-nav bg-dark"
@@ -109,31 +107,31 @@ require('phpcodes/connection.php');
             </li>
             <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
             <li>
-              <a href="studentrecords.php" class="nav-link px-3">
+              <a href="student.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-graduation-cap"></i></span>
                 <span>Students</span>
               </a>
             </li>
             <li>
-              <a href="teacherrecords.php" class="nav-link px-3">
+              <a href="teacher.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-users-alt"></i></span>
                 <span>Teachers</span>
               </a>
             </li>
             <li>
-              <a href="parentrecords.php" class="nav-link px-3">
+              <a href="parent.php" class="nav-link px-3">
                 <span class="me-2"><i class="i fi-rr-users"></i></span>
                 <span>Parents</span>
               </a>
             </li>
             <li>
-              <a href="section.php" class="nav-link px-3">
+              <a href="sections.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-edit-alt"></i></span>
                 <span>Sections</span>
               </a>
             </li>
             <li>
-              <a href="subject.php" class="nav-link px-3">
+              <a href="subjects.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-book-open-cover"></i></span>
                 <span>Subjects</span>
               </a>
@@ -145,13 +143,13 @@ require('phpcodes/connection.php');
               </a>
             </li>
             <li>
-              <a href="learningmaterials.php" class="nav-link px-3">
+              <a href="materials.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-layout-fluid"></i></span>
                 <span>Materials</span>
               </a>
             </li>
             <li>
-              <a href="workactivity.php" class="nav-link px-3">
+              <a href="activity.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-pencil"></i></span>
                 <span>Activities</span>
               </a>
@@ -166,20 +164,29 @@ require('phpcodes/connection.php');
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <h4>Dashboard</h4>
+            <h4 style="font-size: 36px; font-weight: bold;">Dashboard</h4>
           </div>
         </div>
         <div class="row">
           <div class="col-md-3 mb-3">
             <div class="card bg-primary text-white h-100">
-              <div class="card-body py-5">Students</div>
+              <div class="card-body py-5" style="font-size: 28px;">Students</div>
                 <?php
-                    include('phpcodes/totalstudents.php');
+                    //include('phpcodes/totalstudents.php');
+                         
+                   $query = "SELECT COUNT(studentID) AS TOT FROM students;";
+                  $query_run = mysqli_query($conn,$query);
+                            if($query_run){
+                                foreach($query_run as $row){
+                                    echo "<h1 style='color: white; padding-left: 20px;'>" . $row['TOT'] . "</h1>";
+                                }
+                            }
+                    
                  ?>
               <a href='studentrecords.php'>
               <div class="card-footer d-flex">
                 
-               <a href="" >View Details</a>
+                <a href="student.php" style="color: white; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='lightgray';" onmouseout="this.style.color='white';">View Details</a>
                 <span class="ms-auto">
                 </span></a>
               </div>
@@ -187,18 +194,18 @@ require('phpcodes/connection.php');
           </div>
           <div class="col-md-3 mb-3">
             <div class="card bg-warning text-dark h-100">
-              <div class="card-body py-5">Teachers</div>
+              <div class="card-body py-5" style="font-size: 28px; color: white;">Teachers</div>
               <?php
                 $query = "SELECT COUNT(facultyID) AS TOT FROM faculty;";
                 $query_run = mysqli_query($conn,$query);
                             if($query_run){
                                 foreach($query_run as $row){
-                                    echo "<h1>" . $row['TOT'] . "</h1>";
+                                    echo "<h1 style='color: white; padding-left: 20px;'>" . $row['TOT'] . "</h1>";
                                 }
                             }
                 ?>
               <div class="card-footer d-flex">
-                <a href="" >View Details</a>
+                <a href="teacher.php" style="color: white; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='lightgray';" onmouseout="this.style.color='white';">View Details</a>
                 <span class="ms-auto">
                   <i class="bi bi-chevron-right"></i>
                 </span>
@@ -207,12 +214,19 @@ require('phpcodes/connection.php');
           </div>
           <div class="col-md-3 mb-3">
             <div class="card bg-success text-white h-100">
-              <div class="card-body py-5">Parents</div>
+              <div class="card-body py-5" style="font-size: 28px;">Parents</div>
                         <?php
-                            include('phpcodes/totalparents.php');
+                            //include('phpcodes/totalparents.php');
+                          $query = "SELECT COUNT(parentID) AS TOT FROM parents;";
+                          $query_run = mysqli_query($conn,$query);
+                            if($query_run){
+                                foreach($query_run as $row){
+                                    echo "<h1 style='color: white; padding-left: 20px;'>" . $row['TOT'] . "</h1>";
+                                }
+                            }
                         ?>
               <div class="card-footer d-flex">
-                <a href="" >View Details</a>
+                <a href="parent.php" style="color: white; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='lightgray';" onmouseout="this.style.color='white';">View Details</a>
                 <span class="ms-auto">
                   <i class="bi bi-chevron-right"></i>
                 </span>
@@ -221,20 +235,20 @@ require('phpcodes/connection.php');
           </div>
           <div class="col-md-3 mb-3">
             <div class="card bg-danger text-white h-100">
-              <div class="card-body py-5">Sections</div>
+              <div class="card-body py-5" style="font-size: 28px;">Sections</div>
               <?php
                 $query = "SELECT COUNT(sectionID) AS TOT FROM sections;";
                 $query_run = mysqli_query($conn,$query);
                             if($query_run){
                                 foreach($query_run as $row){
-                                    echo "<h1>" . $row['TOT'] . "</h1>";
+                                    echo "<h1 style='color: white; padding-left: 20px;'>" . $row['TOT'] . "</h1>";
                                 }
                             }
                 ?>
 
 
               <div class="card-footer d-flex">
-                View Details
+                <a href="sections.php" style="color: white; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='lightgray';" onmouseout="this.style.color='white';">View Details</a>
                 <span class="ms-auto">
                   <i class="bi bi-chevron-right"></i>
                 </span>
@@ -243,37 +257,6 @@ require('phpcodes/connection.php');
           </div>
         </div>
 
-
-        
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <div class="card h-100">
-              <div class="card-header">
-                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                Area Chart Example
-              </div>
-              
-              <div class="card-body">
-                <canvas class="chart" width="400" height="200"></canvas>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-md-6 mb-3">
-            <div class="card h-100">
-              <div class="card-header">
-                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                Area Chart Example
-
-
-              </div>
-              <div class="card-body">
-                <canvas class="chart" width="400" height="200"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="row">
           <div class="col-md-12 mb-3">
             <div class="card">

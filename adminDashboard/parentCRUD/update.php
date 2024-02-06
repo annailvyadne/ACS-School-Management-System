@@ -28,17 +28,17 @@ if (isset($_POST['fname'])) {
         if ($affected_rows > 0) {
             $_SESSION['status'] = "Successfully updated";
             $_SESSION['status_code'] = "success";
-            header('location: ../parentrecords.php');
+            header('location: ../parent.php');
         } else {
             $_SESSION['status'] = "No records updated";
             $_SESSION['status_code'] = "error";
             echo "mali";
-            header('location: ../parentrecords.php');
+            header('location: ../parent.php');
         }
     } else {
         $_SESSION['status'] = "Error executing query: " . $stmt->error;
         $_SESSION['status_code'] = "error";
-        header('location: ../parentrecords.php');
+        header('location: ../parent.php');
     }
 
     $stmt->close();
