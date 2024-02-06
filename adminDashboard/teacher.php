@@ -67,12 +67,12 @@ require('phpcodes/connection.php');
                           </div>
 
 
-<!--create modal-->
-<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="modalHeader" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="modalHeader">Add Teacher</h1>
+   <!-- Create modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden"true">
+  <div class="modal-dialog">=
+    <div class="modal-content">
+      <div class="modal-header">
+              <h1 class="modal-title fs-5" id="modalHeader">Add Teacher</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -132,15 +132,13 @@ require('phpcodes/connection.php');
     </select>
     <div class="invalid-feedback">Faculty type is required</div>
 </div>
-
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      </div>
     </div>
+  </div>
 </div>
 
 

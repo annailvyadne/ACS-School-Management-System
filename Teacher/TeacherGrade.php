@@ -23,16 +23,17 @@ if($query_run){
 <?php
 require('TeacherLayout/sidebar.php');
 ?>
-<div class="container">
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal" data-bs-whatever="@mdo">Add grades</button>
-  <div class="cards">
-  </div>
+
+
+
   <div class="content-2">
-      <div class="recent-payments">
+
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal" data-bs-whatever="@mdo" style="margin-left: 50px;">Add grades</button>
+
           <div class="title">
               <h2>Student Grades</h2>
           </div>
-          <table id="datatable">
+          <table id="datatable" class="table" style="margin-top: 20px; margin-right: 100px;">
             <thead>
               <tr>
                 <th>Grades ID</th>
@@ -91,7 +92,9 @@ require('TeacherLayout/sidebar.php');
         </div>  
     </div>
   </div>
-</div>
+
+
+
 <!-- Add Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="modalHeader" aria-hidden="true">
     <div class="modal-dialog">

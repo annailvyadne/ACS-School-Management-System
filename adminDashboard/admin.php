@@ -16,6 +16,7 @@ require('phpcodes/connection.php');
     <link rel="stylesheet" href="css/dataTables.bootstrap5.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+
     <title>ACS Admin Dashboard</title>
   </head>
   <body>
@@ -251,16 +252,21 @@ require('phpcodes/connection.php');
                 <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
                 Area Chart Example
               </div>
+              
               <div class="card-body">
                 <canvas class="chart" width="400" height="200"></canvas>
               </div>
             </div>
           </div>
+
+
           <div class="col-md-6 mb-3">
             <div class="card h-100">
               <div class="card-header">
                 <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
                 Area Chart Example
+
+
               </div>
               <div class="card-body">
                 <canvas class="chart" width="400" height="200"></canvas>
@@ -272,7 +278,7 @@ require('phpcodes/connection.php');
           <div class="col-md-12 mb-3">
             <div class="card">
               <div class="card-header">
-                <span><i class="bi bi-table me-2"></i></span> Data Table
+                <span><i class="bi bi-table me-2"></i></span> Faculty Members
               </div>
               <div class="card-body">
                 <div class="table-responsive">

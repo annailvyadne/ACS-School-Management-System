@@ -134,7 +134,7 @@ require('phpcodes/connection.php');
   </div>
 </div>
 
-
+<!--EDIT-->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="modalHeader" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
@@ -195,12 +195,13 @@ require('phpcodes/connection.php');
     </div>
   </div>
 </div>
+
 <!-- Form for deleting a row -->
 <form action="workActivityCRUD/delete.php" id="deleteForm" method="POST">
   <input type="hidden" name="workActivityID_delete" id="workActivityID_delete">
 </form>
 <?php 
-  require('layout/scripts.php');
+  require('newLayout/scripts.php');
 ?>
 <script>
   function validateNumberInput() {

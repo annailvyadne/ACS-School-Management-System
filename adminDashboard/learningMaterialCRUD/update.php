@@ -24,7 +24,7 @@
         $stmt = mysqli_prepare($conn,$query);
         $stmt->bind_param("sii", $title,$classID,$id);
         $stmt->execute();
-        header('location: ../learningmaterials.php');
+        header('location: ../materials.php');
         $_SESSION['status'] = "Successfully updated";
         $_SESSION['status_code'] = "success";
     } else {
@@ -67,7 +67,7 @@
         $stmt = mysqli_prepare($conn,$query);
         $stmt->bind_param("sisi", $title,$classID,$newFilePath,$id);
         $stmt->execute();
-        header('location: ../learningmaterials.php');
+        header('location: ../materials.php');
         $_SESSION['status'] = "Successfully updated";
         $_SESSION['status_code'] = "success";
       }
