@@ -1,30 +1,24 @@
- 
-<aside>
+ <aside>
 
 
 
- <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+     <!-- Sidebar -->
+     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+         <!-- Divider -->
+         <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="../student.php">
-  
-                    <span style="font-size: 30px;">Content</span></a>
-            </li>
+         <!-- Nav Item - Dashboard -->
+         <li class="nav-item active">
+             <a class="nav-link" href="../student.php">
 
-            <!-- Divider -->
-           <hr class="sidebar-divider my-0">
+                 <span style="font-size: 30px;">Content</span></a>
+         </li>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="../StudentSubjectView">
-                    <span style="font-size: 30px;">Gradebook</span></a>
-            </li>
+         <!-- Divider -->
+         <hr class="sidebar-divider my-0">
 
-        </ul>
-        <!-- End of Sidebar -->
-    
-</aside>
+     </ul>
+     <!-- End of Sidebar -->
+
+ </aside>
