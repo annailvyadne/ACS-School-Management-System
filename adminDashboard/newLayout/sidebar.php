@@ -25,7 +25,7 @@
               </a>
             </li>
             <li>
-              <a href="teacher  .php" class="nav-link px-3">
+              <a href="teacher.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-users-alt"></i></span>
                 <span>Teachers</span>
               </a>
