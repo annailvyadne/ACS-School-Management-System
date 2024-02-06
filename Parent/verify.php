@@ -1,6 +1,7 @@
 <?php 
   session_start();
   require('../db/config.php');
+
   if(isset($_POST['email'])){
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
@@ -8,7 +9,7 @@
     
     print_r($_POST);
     $query = "SELECT parentID, parentPassword FROM parents WHERE parentEmailAdd = ?";
-     $stmt = mysqli_prepare($conn, $query);
+    $stmt = mysqli_prepare($conn, $query);
     $stmt->bind_param("s", $email);
     
     if($stmt->execute()){
@@ -26,7 +27,6 @@
           $_SESSION['statusCustomer_code'] = "success";
           echo "same";
           $_SESSION['parentID'] = $parentID;
-
 
           header('location: parent.php');
         } else {

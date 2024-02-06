@@ -125,7 +125,7 @@ require('phpcodes/connection.php');
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Email Address:</label>
-            <input type="text" class="form-control" id="recipient-name" name="ea" required>
+            <input type="email" class="form-control" id="recipient-name" name="ea" required>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Password</label>

@@ -3,8 +3,12 @@
 require('../db/config.php');
 require('ParentLayout/header.php');
 require('ParentLayout/topbar.php');
+
+print_r($_SESSION);
+
 $parentID = $_SESSION['parentID'];
 $quarter = 1;
+
 if(isset($_GET['quarter'])){
   $quarter = $_GET['quarter'];
 } else {
@@ -18,6 +22,7 @@ if($query_run){
   } 
   echo $studentID;
 }
+
 
 ?>
 

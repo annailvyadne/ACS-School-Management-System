@@ -19,6 +19,19 @@ echo $subjectID;
 ?>
 
 <body>
+<<<<<<< HEAD
+<div id="wrapper">
+<?php
+require('TeacherLayout/sidebar.php');
+?>
+
+
+
+  <div class="content-2">
+
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal" data-bs-whatever="@mdo" style="margin-left: 50px;">Add grades</button>
+
+=======
   <div id="wrapper">
     <?php
     require('TeacherLayout/sidebar.php');
@@ -29,10 +42,15 @@ echo $subjectID;
       </div>
       <div class="content-2">
         <div class="recent-payments">
+>>>>>>> 99c6cb9c44f6b4167eaa345f88ad5662c785c4a2
           <div class="title">
             <h2>Student Grades</h2>
           </div>
+<<<<<<< HEAD
+          <table id="datatable" class="table" style="margin-top: 20px; margin-right: 100px;">
+=======
           <table id="datatable" class="table thead-dark table-striped">
+>>>>>>> 99c6cb9c44f6b4167eaa345f88ad5662c785c4a2
             <thead>
               <tr>
                 <th>Grades ID</th>
@@ -92,8 +110,16 @@ echo $subjectID;
       </div>
     </div>
   </div>
+<<<<<<< HEAD
+
+
+
+<!-- Add Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="modalHeader" aria-hidden="true">
+=======
   <!-- Add Modal -->
   <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="modalHeader" aria-hidden="true">
+>>>>>>> 99c6cb9c44f6b4167eaa345f88ad5662c785c4a2
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

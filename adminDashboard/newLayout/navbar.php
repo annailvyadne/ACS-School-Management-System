@@ -35,7 +35,7 @@
                 placeholder="Search"
                 aria-label="Search"
               />
-              <button class="btn btn-primary" type="submit">
+              <button class="btn btn-primary" type="submit" style="background-color:red; border:none;">
                 <i class="bi bi-search"></i>
               </button>
             </div>
