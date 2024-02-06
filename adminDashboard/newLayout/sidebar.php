@@ -1,9 +1,5 @@
     <!-- offcanvas -->
-    <div
-      class="offcanvas offcanvas-start sidebar-nav bg-dark"
-      tabindex="-1"
-      id="sidebar"
-    >
+    <div class="offcanvas offcanvas-start sidebar-nav bg-dark" tabindex="-1" id="sidebar">
       <div class="offcanvas-body p-0">
         <nav class="navbar-dark">
           <ul class="navbar-nav">
@@ -19,15 +15,17 @@
               </a>
             </li>
             </li>
-            <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
+            <li class="my-4">
+              <hr class="dropdown-divider bg-light" />
+            </li>
             <li>
-              <a href="studentrecords.php" class="nav-link px-3">
+              <a href="student.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-graduation-cap"></i></span>
                 <span>Students</span>
               </a>
             </li>
             <li>
-              <a href="teacherrecords.php" class="nav-link px-3">
+              <a href="teacher  .php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-users-alt"></i></span>
                 <span>Teachers</span>
               </a>
@@ -39,7 +37,7 @@
               </a>
             </li>
             <li>
-              <a href="section.php" class="nav-link px-3">
+              <a href="sections.php" class="nav-link px-3">
                 <span class="me-2"><i class="fi fi-rr-edit-alt"></i></span>
                 <span>Sections</span>
               </a>
