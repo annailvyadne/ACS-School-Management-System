@@ -23,7 +23,7 @@ if ($query_run) {
         if ($query_run) {
             foreach ($query_run as $row) {
                 echo "<div class='col-xl-3 col-md-6 mb-4'>
-                    <a href='studentGrades.php?subjectid=" . $row['subjectID'] . "' class='card-link'>
+                    <a href='studentSubject.php?subjectid=" . $row['subjectid'] . "' class='card-link'>
                         <div class='card border-left-success shadow h-100 py-2'>
                             <div class='card-body'>
                                 <div class='row no-gutters align-items-center'>

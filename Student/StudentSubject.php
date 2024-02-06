@@ -1,69 +1,73 @@
 <?php
 require('StudentLayout/header.php');
 require('StudentLayout/topbar.php');
+require('../db/config.php');
+$subjectID = $_GET['subjectid'];
+// print_r($_GET);
+print_r($_SESSION);
+$query = "SELECT subjectName FROM subject WHERE subjectID = ?";
+$stmt = mysqli_prepare($conn, $query);
+$stmt->bind_param("i", $subjectID);
+$stmt->execute();
+$stmt->bind_result($subjName);
+$stmt->fetch(); // Fetch the result into bound variables
+$stmt->close();
 ?>
 
-<h1 style="font-size: 60px;">Filipino</h1>
+<h1 style="font-size: 60px;"><?php echo $subjName; ?></h1>
 
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-<?php
-require('StudentLayout/sidebar.php');
-?>
-
-
-<div class="container-fluid">
-    <div class="accordion-container">
-        <div class="accordion" id="accordionExample">
-            <!-- Accordion Item #1 -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Accordion Item #1
-                    </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <ul class="list-group" style="width: 100%;">
-                            <li class="list-group-item">Homework 1</li>
-                            <li class="list-group-item">Homework 2</li>
-                            <li class="list-group-item">Homework 3</li>
-                            <!-- Add more list items if needed -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Accordion Item #2 -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Accordion Item #2
-                    </button>
-                </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <ul class="list-group" style="width: 100%;">
-                            <li class="list-group-item">Topic 1 Lesson</li>
-                            <li class="list-group-item">Topic 2 Powerpoint</li>
-                            <li class="list-group-item">Topic 3 Link</li>
-                            <!-- Add more list items if needed -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div> <!-- End of Accordion -->
-    </div>
-</div>
-
-
-
-
-
-    </div>
-    <!-- End of Page Wrapper -->
-
     <?php
-    require('StudentLayout/script.php');
+    require('StudentLayout/sidebar.php');
     ?>
+
+
+    <div class="container-fluid">
+        <div class="accordion-container">
+            <div class="accordion" id="accordionExample">
+
+                <?php
+                $query = "SELECT * FROM workActivity w INNER JOIN class c ON c.classID = w.class_id WHERE c.subjectID = ?";
+                $stmt = mysqli_prepare($conn, $query);
+                $stmt->bind_param("i", $subjectID);
+                $stmt->execute();
+                $result = $stmt->get_result(); // Get the result set from the prepared statement
+
+                // Assuming you have already fetched data from the database and stored it in $result
+                while ($row = $result->fetch_assoc()) {
+                    echo "<div class='accordion-item'>
+                        <h2 class='accordion-header' id='heading{$row['id']}'>
+                            <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#collapse{$row['id']}' aria-expanded='true' aria-controls='collapse{$row['id']}'>
+                                {$row['actName']}
+                            </button>
+                            <form action=>
+
+                            </form>
+                        </h2>
+                        <div id='collapse{$row['id']}' class='accordion-collapse collapse show' aria-labelledby='heading{$row['id']}' data-bs-parent='#accordionExample'>
+                            <div class='accordion-body d-flex justify-content-between'>
+                                {$row['actDesc']}
+                                <a href=" . $row['filePath'] . "><button class='btn btn-outline-primary'>Download</button></a>
+                            </div>
+                        </div>
+                    </div>";
+                }
+                ?>
+                <!-- Accordion Item #1 -->
+
+            </div> <!-- End of Accordion -->
+        </div>
+    </div>
+
+
+
+
+
+</div>
+<!-- End of Page Wrapper -->
+
+<?php
+require('StudentLayout/script.php');
+?>
