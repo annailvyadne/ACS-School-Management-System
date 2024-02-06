@@ -22,12 +22,12 @@ $stmt_delete_student->bind_param("i", $studentId);
         if ($affected_rows > 0) {
             $_SESSION['status'] = "Successfully deleted";
             $_SESSION['status_code'] = "success";
-            header('location: ../studentrecords.php');
+            header('location: ../student.php');
         } else {
             echo "No rows affected.<br>";
             $_SESSION['status'] = "Failed to delete record: " . $stmt_delete_studentt->error;
             $_SESSION['status_code'] = "error";
-            header('location: ../studentrecords.php');
+            header('location: ../student.php');
         }
 
         $$stmt_delete_student->close(); // Close the statement
@@ -35,7 +35,7 @@ $stmt_delete_student->bind_param("i", $studentId);
         echo "Error executing query.<br>";
         $_SESSION['status'] = "Error executing query";
         $_SESSION['status_code'] = "error";
-        header('location: ../studentrecords.php');
+        header('location: ../student.php');
     }
 }
 ?>

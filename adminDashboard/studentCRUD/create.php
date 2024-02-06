@@ -26,18 +26,18 @@ if(isset($_POST['fname'])){
         if($affected_rows > 0){
             $_SESSION['status'] = "Successfully added";
             $_SESSION['status_code'] = "success";
-            header('location: ../studentrecords.php');
+            header('location: ../student.php');
         } else {
             // Handle the case where no rows were affected (insertion failed)
             $_SESSION['status'] = "Failed to add record";
             $_SESSION['status_code'] = "error";
-            header('location: ../studentrecords.php');
+            header('location: ../student.php');
         }
     } else {
         // Handle the case where the execute method failed
         $_SESSION['status'] = "Error executing query";
         $_SESSION['status_code'] = "error";
-        header('location: ../studentrecords.php');
+        header('location: ../student.php');
     }
 }
 

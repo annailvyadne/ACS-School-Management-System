@@ -59,7 +59,7 @@
       }
         $_SESSION['status'] = "Successfully added";
         $_SESSION['status_code'] = "success";
-        header('location: ../workactivity.php');
+        header('location: ../activity.php');
     }
   }
 ?>

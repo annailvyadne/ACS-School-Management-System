@@ -7,20 +7,17 @@
   <?php 
     require('layout/navbar.php');
   ?>
+
   <div class="content">
 
-        
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal" data-bs-whatever="@mdo" style="margin-left: 20px; margin-bottom: 2px; background-color: red; border: 0; box-shadow: 0 12px 16px 0 rgba(0,0,0,0.10),0 17px 50px 0 rgba(0,0,0,0.10); ">Add Student</button>
            
+            <div class="content-2" style="margin-top: 50px;">
 
-<div class="cards" style="margin-top: -30px;">
-            </div>
-            <div class="content-2">
-                <div class="recent-payments" style="margin-top: 10px;">
                     <div class="title">
                         <h2>Student Records</h2>
                     </div>
-                    <table id="datatable">
+                    <table id="datatable" class="table">
                       <thead>
                         <tr>
                           <th>Student ID</th>
@@ -88,7 +85,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
 
     <!-- Create modal -->
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden"true">

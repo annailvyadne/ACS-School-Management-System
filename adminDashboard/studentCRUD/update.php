@@ -35,16 +35,16 @@ if(isset($_POST['fname'])){
          if($affected_rows > 0){
              $_SESSION['status'] = "Successfully updated";
              $_SESSION['status_code'] = "success";
-             header('location: ../studentrecords.php');
+             header('location: ../student.php');
          } else {
              $_SESSION['status'] = "No records updated";
              $_SESSION['status_code'] = "error";
-             header('location: ../studentrecords.php');
+             header('location: ../student.php');
          }
      } else {
          $_SESSION['status'] = "Error executing query";
          $_SESSION['status_code'] = "error";
-         header('location: ../studentrecords.php');
+         header('location: ../student.php');
      }
 
      $stmt->close();

@@ -28,12 +28,12 @@ if (isset($_POST['subjID'])) {
     } else {
       $_SESSION['status'] = "There was an error uploading your image!";
       $_SESSION['status_code'] = "error";
-      header("location: ../subject.php");
+      header("location: ../subjects.php");
     }
   } else {
     $_SESSION['status'] = "File type not allowed";
     $_SESSION['status_code'] = "error";
-    header("location: ../subject.php");
+    header("location: ../subjects.php");
   }
 
 
@@ -51,5 +51,5 @@ if (isset($_POST['subjID'])) {
   $stmt->execute();
   $_SESSION['status'] = "Successfully updated";
   $_SESSION['status_code'] = "success";
-  header("location: ../subject.php");
+  header("location: ../subjects.php");
 }

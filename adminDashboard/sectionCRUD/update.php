@@ -19,18 +19,18 @@ if(isset($_POST['sectionEdit'])){
       if($affected_rows > 0){
           $_SESSION['status'] = "Successfully updated";
           $_SESSION['status_code'] = "success";
-          header('location: ../section.php');
+          header('location: ../sections.php');
       } else {
           // Handle the case where no rows were affected (insertion failed)
           $_SESSION['status'] = "Failed to delete record";
           $_SESSION['status_code'] = "error";
-          header('location: ../section.php');
+          header('location: ../sections.php');
       }
     } else {
         // Handle the case where the execute method failed
         $_SESSION['status'] = "Error executing query";
         $_SESSION['status_code'] = "error";
-        header('location: ../section.php');
+        header('location: ../sections.php');
     } 
 }
 ?>

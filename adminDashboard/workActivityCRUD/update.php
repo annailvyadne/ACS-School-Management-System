@@ -24,7 +24,7 @@
         $stmt->execute();
         $_SESSION['status'] = "Successfully updated";
         $_SESSION['status_code'] = "success";
-        header('location: ../workactivity.php');
+        header('location: ../activity.php');
     } else {
       $total_count = count($_FILES['files']['name']);
       for($i = 0; $i < $total_count; $i++){
@@ -51,7 +51,7 @@
         $stmt->execute();
         $_SESSION['status'] = "Successfully updated";
         $_SESSION['status_code'] = "success";
-        header('location: ../workactivity.php');
+        header('location: ../activity.php');
         echo "meron";
     }
    
