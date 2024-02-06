@@ -2,8 +2,17 @@
 require('StudentLayout/header.php');
 require('StudentLayout/topbar.php');
 require('../db/config.php');
-$subjectID = $_GET['subjectid'];
+
+
+if (isset($_GET['subjectid'])) {
+    $subjectID  = $_GET['subjectid'];
+    $_SESSION['subjectid'] = $subjectID;
+} else {
+    $subjectID = $_SESSION['subjectid'];
+}
 // print_r($_GET);
+$classID = $_SESSION['classID'];
+
 print_r($_SESSION);
 $query = "SELECT subjectName FROM subject WHERE subjectID = ?";
 $stmt = mysqli_prepare($conn, $query);
@@ -26,6 +35,7 @@ $stmt->close();
 
     <div class="container-fluid">
         <div class="accordion-container">
+            <h1>Work Activities</h1>
             <div class="accordion" id="accordionExample">
 
                 <?php
@@ -33,41 +43,79 @@ $stmt->close();
                 $stmt = mysqli_prepare($conn, $query);
                 $stmt->bind_param("i", $subjectID);
                 $stmt->execute();
+                $result = $stmt->get_result(); // Get the result set from the prepared statement        
+                $stmt->close();
+                // Assuming you have already fetched data from the database and stored it in $result
+                while ($row = $result->fetch_assoc()) {
+                    echo "<div class='accordion-item'>
+        <h2 class='accordion-header' id='heading{$row['id']}'>
+            <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#collapse{$row['id']}' aria-expanded='true' aria-controls='collapse{$row['id']}'>
+                {$row['actName']}
+            </button>
+        </h2>
+        <div id='collapse{$row['id']}' class='accordion-collapse collapse show' aria-labelledby='heading{$row['id']}' data-bs-parent='#accordionExample'>
+            <div class='accordion-body d-flex justify-content-between'>
+            
+                {$row['actDesc']}
+                  <form action=''>
+                        <input type='file' name='workA' class='form-control'
+                    </form>";
+
+                    if ($row['filePath'] == '') {
+                        echo "<button class='btn btn-outline-secondary' disabled>Download</button>";
+                    } else {
+                        echo "<a href='" . $row['filePath'] . "'><button class='btn btn-outline-primary'>Download</button></a>";
+                    }
+                    echo "      
+                    
+                    </div>
+                </div>
+            </div>";
+                }
+                ?>
+
+
+            </div> <!-- End of Accordion -->
+        </div>
+        <h1 class="mt-5">Learning Materials</h1>
+        <div class="accordion-container">
+            <div class="accordion" id="accordionExample">
+                <?php
+                $query = "SELECT * FROM learningmaterials WHERE class_ID = ?";
+                $stmt = mysqli_prepare($conn, $query);
+                $stmt->bind_param("i", $classID);
+                $stmt->execute();
                 $result = $stmt->get_result(); // Get the result set from the prepared statement
 
                 // Assuming you have already fetched data from the database and stored it in $result
                 while ($row = $result->fetch_assoc()) {
                     echo "<div class='accordion-item'>
-                        <h2 class='accordion-header' id='heading{$row['id']}'>
-                            <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#collapse{$row['id']}' aria-expanded='true' aria-controls='collapse{$row['id']}'>
-                                {$row['actName']}
-                            </button>
-                            <form action=>
+        <h2 class='accordion-header' id='heading{$row['id']}'>
+            <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#collapse{$row['id']}' aria-expanded='true' aria-controls='collapse{$row['id']}'>
+                {$row['title']}
+            </button>
+        </h2>
+        <div id='collapse{$row['id']}' class='accordion-collapse collapse show' aria-labelledby='heading{$row['id']}' data-bs-parent='#accordionExample'>
+            <div class='accordion-body d-flex justify-content-between'>";
 
-                            </form>
-                        </h2>
-                        <div id='collapse{$row['id']}' class='accordion-collapse collapse show' aria-labelledby='heading{$row['id']}' data-bs-parent='#accordionExample'>
-                            <div class='accordion-body d-flex justify-content-between'>
-                                {$row['actDesc']}
-                                <a href=" . $row['filePath'] . "><button class='btn btn-outline-primary'>Download</button></a>
-                            </div>
-                        </div>
-                    </div>";
+                    if ($row['filePath'] == '') {
+                        echo "<button class='btn btn-outline-secondary' disabled>Download</button>";
+                    } else {
+                        echo "<a href='" . substr($row['filePath'], 3) . "' download ><button class='btn btn-outline-primary'>Download</button></a>";
+                    }
+                    echo "      
+                    
+                    </div>
+                </div>
+            </div>";
                 }
                 ?>
-                <!-- Accordion Item #1 -->
 
-            </div> <!-- End of Accordion -->
+
+            </div>
         </div>
-    </div>
+        <!-- End of Page Wrapper -->
 
-
-
-
-
-</div>
-<!-- End of Page Wrapper -->
-
-<?php
-require('StudentLayout/script.php');
-?>
+        <?php
+        require('StudentLayout/script.php');
+        ?>
