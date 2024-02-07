@@ -1,41 +1,41 @@
   <?php
-require('newLayout/header.php');
-require('newLayout/navbar.php');
-require('newLayout/sidebar.php');
-require('phpcodes/connection.php');
-?> 
+  require('newLayout/header.php');
+  require('newLayout/navbar.php');
+  require('newLayout/sidebar.php');
+  require('phpcodes/connection.php');
+  ?>
 
-<div class="container-fluid px-5">
+  <div class="container-fluid px-5">
 
-<div class="content">
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal" data-bs-whatever="@mdo" style="margin-left: 20px; margin-bottom: 2px; background-color: red; border: 0; box-shadow: 0 12px 16px 0 rgba(0,0,0,0.10),0 17px 50px 0 rgba(0,0,0,0.10); ">Add work activity</button>
+    <div class="content">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal" data-bs-whatever="@mdo" style="margin-left: 20px; margin-bottom: 2px; background-color: red; border: 0; box-shadow: 0 12px 16px 0 rgba(0,0,0,0.10),0 17px 50px 0 rgba(0,0,0,0.10); ">Add work activity</button>
 
       <div class="content-2" style="margin-top: 50px;">
 
-          <div class="title">
-              <h2>Work Activity Records</h2>
-          </div>
-          <table id="datatable" class="table">
-            <thead>
-              <tr>
-                <th>Work Activity ID</th>
-                <th>Class ID</th>
-                <th>Activity Title</th>
-                <th>Description</th>
-                <th>Due Date</th>
-                <th>Score</th>
-                <th>Download</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php 
-              $query = "SELECT w.*,c.classID FROM workActivity w INNER JOIN class c ON(c.classID = w.class_id)";
-              $query_run = mysqli_query($conn, $query);
-              
-              if($query_run) {
-                foreach ($query_run as $row) {
-                  echo "
+        <div class="title">
+          <h2>Work Activity Records</h2>
+        </div>
+        <table id="datatable" class="table">
+          <thead>
+            <tr>
+              <th>Work Activity ID</th>
+              <th>Class ID</th>
+              <th>Activity Title</th>
+              <th>Description</th>
+              <th>Due Date</th>
+              <th>Score</th>
+              <th>Download</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            $query = "SELECT w.*,c.classID FROM workActivity w INNER JOIN class c ON(c.classID = w.class_id)";
+            $query_run = mysqli_query($conn, $query);
+
+            if ($query_run) {
+              foreach ($query_run as $row) {
+                echo "
                       <tr>
                           <td>" . $row['id'] . "</td>
                           <td>" . $row['classID'] . "</td>
@@ -43,38 +43,37 @@ require('phpcodes/connection.php');
                           <td>" . $row['actDesc'] . "</td>
                           <td>" . $row['dueDate'] . "</td>
                           <td>" . $row['actScore'] . "</td>
-                          <td><a href=". substr($row['filePath'],3) ." target='_blank' download><button class='btn btn-outline-primary'>Download</button></a></td>
+                          <td><a href='" . substr($row['filePath'], 3) . "' target='_blank' download><button class='btn btn-outline-primary'>Download</button></a></td>
                           
                           <td>
                               <i style='color:green' class='fi fi-rr-edit editBtn' data-facultyid=''></i>
-                              <i style='color:red;' class='fi fi-rr-trash deleteBtn' data-id=".$row['id'] ."></i>
+                              <i style='color:red;' class='fi fi-rr-trash deleteBtn' data-id=" . $row['id'] . "></i>
                           </td>
                       </tr>";
               }
-
-              }
-              ?>
-            </tbody>
-            <tfoot>
-              <tr>
-                <th>Work Activity ID</th>
-                <th>Class ID</th>
-                <th>Activity Title</th>
-                <th>Description</th>
-                <th>Due Date</th>
-                <th>Score</th>
-                <th>Download</th>
-                <th>Actions</th>
-              </tr>
-            </tfoot>
-          </table>
+            }
+            ?>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Work Activity ID</th>
+              <th>Class ID</th>
+              <th>Activity Title</th>
+              <th>Description</th>
+              <th>Due Date</th>
+              <th>Score</th>
+              <th>Download</th>
+              <th>Actions</th>
+            </tr>
+          </tfoot>
+        </table>
       </div>
     </div>
   </div>
 
-      
-<!--create modal-->
-<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="modalHeader" aria-hidden="true">
+
+  <!--create modal-->
+  <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="modalHeader" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -84,29 +83,29 @@ require('phpcodes/connection.php');
         <div class="modal-body">
           <form method="post" action="workActivityCRUD/create.php" class="needs-validation" novalidate enctype="multipart/form-data">
             <div class="mb-3">
-                <label for="title" class="col-form-label">Activity title</label>
-                <input type="text" class="form-control" id="title" name="title" required>
-                <div class="invalid-feedback">Title is required.</div>
+              <label for="title" class="col-form-label">Activity title</label>
+              <input type="text" class="form-control" id="title" name="title" required>
+              <div class="invalid-feedback">Title is required.</div>
             </div>
             <div class="mb-3">
-                <label for="desc" class="col-form-label">Description</label>
-                <textarea name="desc" id="desc" cols="15" rows="4" class="form-control" required></textarea>
-                <div class="invalid-feedback">Description is required</div>
+              <label for="desc" class="col-form-label">Description</label>
+              <textarea name="desc" id="desc" cols="15" rows="4" class="form-control" required></textarea>
+              <div class="invalid-feedback">Description is required</div>
             </div>
             <div class="mb-3">
               <label for="classID" class="col-form-label">Class</label>
               <select name="classID" id="classID" class="form-select" aria-label="Default Select Example" required>
                 <option value="" selected disabled>Select a class</option>
-                  <?php 
+                <?php
 
-                  $query = "SELECT c.*,st.sectionName, st.gradeLevel,s.subjectName FROM class c INNER JOIN subject s ON(s.subjectID = c.subjectID) INNER JOIN sections st ON(st.sectionID = c.sectionID)";
-                  $query_run = mysqli_query($conn, $query);
-                  if($query_run){
-                      foreach ($query_run as $row) {
-                      echo "<option value=" . $row['classID'] . ">" . $row['subjectName'] . "-".  $row['sectionName']. "-".$row['gradeLevel'] . "</option>";
-                    }
+                $query = "SELECT c.*,st.sectionName, st.gradeLevel,s.subjectName FROM class c INNER JOIN subject s ON(s.subjectID = c.subjectID) INNER JOIN sections st ON(st.sectionID = c.sectionID)";
+                $query_run = mysqli_query($conn, $query);
+                if ($query_run) {
+                  foreach ($query_run as $row) {
+                    echo "<option value=" . $row['classID'] . ">" . $row['subjectName'] . "-" .  $row['sectionName'] . "-" . $row['gradeLevel'] . "</option>";
                   }
-                  ?>
+                }
+                ?>
               </select>
               <div class="invalid-feedback">Class is required</div>
             </div>
@@ -126,17 +125,17 @@ require('phpcodes/connection.php');
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </div>
+      </div>
     </div>
   </div>
-</div>
 
-<!--EDIT-->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="modalHeader" aria-hidden="true">
-  <div class="modal-dialog">
+  <!--EDIT-->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="modalHeader" aria-hidden="true">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="modalHeader">Edit Activity</h1>
@@ -146,29 +145,29 @@ require('phpcodes/connection.php');
           <form method="post" action="workActivityCRUD/update.php" class="needs-validation" novalidate enctype="multipart/form-data">
             <input type="hidden" name="id" id="id_edit">
             <div class="mb-3">
-                <label for="title" class="col-form-label">Activity Title</label>
-                <input type="text" class="form-control" id="title_edit" name="title_edit" required>
-                <div class="invalid-feedback">Activity title is required</div>
+              <label for="title" class="col-form-label">Activity Title</label>
+              <input type="text" class="form-control" id="title_edit" name="title_edit" required>
+              <div class="invalid-feedback">Activity title is required</div>
             </div>
             <div class="mb-3">
-                <label for="desc" class="col-form-label">Description</label>
-                <textarea name="desc_edit" id="desc_edit" cols="15" rows="4" class="form-control"></textarea>
+              <label for="desc" class="col-form-label">Description</label>
+              <textarea name="desc_edit" id="desc_edit" cols="15" rows="4" class="form-control"></textarea>
             </div>
             <div class="mb-3">
               <label for="classID" class="col-form-label">Class</label>
               <select name="classID_edit" id="classID_edit" class="form-select" aria-label="Default Select Example" required>
                 <option value="" selected disabled>Select a class</option>
-              
-                  <?php 
 
-                  $query = "SELECT c.*,st.sectionName, st.gradeLevel,s.subjectName FROM class c INNER JOIN subject s ON(s.subjectID = c.subjectID) INNER JOIN sections st ON(st.sectionID = c.sectionID)";
-                  $query_run = mysqli_query($conn, $query);
-                  if($query_run){
-                      foreach ($query_run as $row) {
-                      echo "<option value=" . $row['classID'] . " data-classid=".$row['classID'].">" . $row['subjectName'] . "-".  $row['sectionName']. "-".$row['gradeLevel'] . "</option>";
-                    }
+                <?php
+
+                $query = "SELECT c.*,st.sectionName, st.gradeLevel,s.subjectName FROM class c INNER JOIN subject s ON(s.subjectID = c.subjectID) INNER JOIN sections st ON(st.sectionID = c.sectionID)";
+                $query_run = mysqli_query($conn, $query);
+                if ($query_run) {
+                  foreach ($query_run as $row) {
+                    echo "<option value=" . $row['classID'] . " data-classid=" . $row['classID'] . ">" . $row['subjectName'] . "-" .  $row['sectionName'] . "-" . $row['gradeLevel'] . "</option>";
                   }
-                  ?>
+                }
+                ?>
               </select>
               <div class="invalid-feedback">Class is required</div>
             </div>
@@ -188,56 +187,57 @@ require('phpcodes/connection.php');
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Form for deleting a row -->
-<form action="workActivityCRUD/delete.php" id="deleteForm" method="POST">
-  <input type="hidden" name="workActivityID_delete" id="workActivityID_delete">
-</form>
-<?php 
+  <!-- Form for deleting a row -->
+  <form action="workActivityCRUD/delete.php" id="deleteForm" method="POST">
+    <input type="hidden" name="workActivityID_delete" id="workActivityID_delete">
+  </form>
+  <?php
   require('newLayout/scripts.php');
-?>
-<script>
-  function validateNumberInput() {
-    var inputElement = document.getElementById('score');
-    var inputValue = inputElement.value;
+  ?>
+  <script>
+    function validateNumberInput() {
+      var inputElement = document.getElementById('score');
+      var inputValue = inputElement.value;
 
-    // Remove non-numeric characters and decimals using a regular expression
-    inputValue = inputValue.replace(/[^0-9]/g, '');
+      // Remove non-numeric characters and decimals using a regular expression
+      inputValue = inputValue.replace(/[^0-9]/g, '');
 
-    // Update the input value with the cleaned numeric value
-    inputElement.value = inputValue;
-}
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      // Update the input value with the cleaned numeric value
+      inputElement.value = inputValue;
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
   <script>
     let table = new DataTable('#datatable');
-  </script> 
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  
-</script>
-    
- <script>
-    $(document).ready(function(){
-      $('#datatable').on('click', '.editBtn', function(){
+
+  </script>
+
+  <script>
+    $(document).ready(function() {
+      $('#datatable').on('click', '.editBtn', function() {
         //Show modal
         $('#editModal').modal('show');
-        
+
         //Get the values on the tablex
-        $tr = $(this).closest('tr'); 
+        $tr = $(this).closest('tr');
         const data = $tr.children("td").map(function() {
-            return $(this).text();
+          return $(this).text();
         }).get();
         console.log(data);
-        
+
         const id = data[0];
         const classID = data[1];
         const title = data[2];
@@ -248,8 +248,8 @@ require('phpcodes/connection.php');
         $('#id_edit').val(id);
         $('#title_edit').val(title);
         $('#desc_edit').val(description);
-        $('#classID_edit option').each(function(){
-          if($(this).data('classid') == classID){
+        $('#classID_edit option').each(function() {
+          if ($(this).data('classid') == classID) {
             $(this).prop('selected', true);
           }
         });
@@ -257,42 +257,42 @@ require('phpcodes/connection.php');
         $('#score_edit').val(score);
       });
 
-        $('#datatable').on('click', '.deleteBtn', function(){
-        
-          //Get id from table
-           $tr = $(this).closest('tr'); 
-            const data = $tr.children("td").map(function() {
-                return $(this).text();
-            }).get();
-            console.log(data);  
+      $('#datatable').on('click', '.deleteBtn', function() {
 
-            //Get the sectionid on the table
-            const id = data[0];
+        //Get id from table
+        $tr = $(this).closest('tr');
+        const data = $tr.children("td").map(function() {
+          return $(this).text();
+        }).get();
+        console.log(data);
 
-            //show a prompt message to confirm if they want to delete it 
-          Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes"
-          }).then((result) => {
-            if (result.isConfirmed) {
-              $('#workActivityID_delete').val(id);
-              $('#deleteForm').submit();
-            }
-          });
-        }); 
+        //Get the sectionid on the table
+        const id = data[0];
+
+        //show a prompt message to confirm if they want to delete it 
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $('#workActivityID_delete').val(id);
+            $('#deleteForm').submit();
+          }
+        });
+      });
     });
-</script>
+  </script>
 
 
 
-<?php 
-  if(isset($_SESSION['status']) && $_SESSION['status'] != ""){
-    ?>
+  <?php
+  if (isset($_SESSION['status']) && $_SESSION['status'] != "") {
+  ?>
 
     <script>
       Swal.fire({
@@ -300,11 +300,12 @@ require('phpcodes/connection.php');
         title: '<?php echo $_SESSION['status'] ?>',
       })
     </script>
-    <?php 
+  <?php
   }
-    unset($_SESSION['status']);
-     unset($_SESSION['status_code']);
+  unset($_SESSION['status']);
+  unset($_SESSION['status_code']);
   ?>
-?>
+
   </body>
-</html>
+
+  </html>

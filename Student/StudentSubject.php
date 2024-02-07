@@ -13,7 +13,8 @@ if (isset($_GET['subjectid'])) {
 // print_r($_GET);
 $classID = $_SESSION['classID'];
 
-print_r($_SESSION);
+
+$studentID = $_SESSION['studentID'];
 $query = "SELECT subjectName FROM subject WHERE subjectID = ?";
 $stmt = mysqli_prepare($conn, $query);
 $stmt->bind_param("i", $subjectID);
@@ -55,22 +56,26 @@ $stmt->close();
         </h2>
         <div id='collapse{$row['id']}' class='accordion-collapse collapse show' aria-labelledby='heading{$row['id']}' data-bs-parent='#accordionExample'>
             <div class='accordion-body d-flex justify-content-between'>
-            
                 {$row['actDesc']}
-                  <form action=''>
-                        <input type='file' name='workA' class='form-control'
-                    </form>";
+                <form action='submit.php' method='post' enctype='multipart/form-data' class='needs-validation' novalidate>
+                    <input type='hidden' name='workActivityID' value='" . $row['id'] . "'>
+                    <input type='hidden' name='studID' value='" . $studentID . "'>
+                    <label for='File Submission'>File Submission</label>
+                    <input type='file' name='workA' class='form-control' required>
+                    <div class='invalid-feedback'>File is required</div>
+                    <button type='submit' class='btn btn-outline-primary mt-2'>Submit</button>
+
+                </form>";
 
                     if ($row['filePath'] == '') {
                         echo "<button class='btn btn-outline-secondary' disabled>Download</button>";
                     } else {
                         echo "<a href='" . $row['filePath'] . "'><button class='btn btn-outline-primary'>Download</button></a>";
                     }
-                    echo "      
-                    
-                    </div>
-                </div>
-            </div>";
+
+                    echo "</div>
+      </div>
+    </div>";
                 }
                 ?>
 
